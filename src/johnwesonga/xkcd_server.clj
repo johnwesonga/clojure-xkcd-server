@@ -4,8 +4,8 @@
             [ring.adapter.jetty :as jetty]
             [johnwesonga.handler :as handler]))
 
- (def config
-   (ig/read-string (slurp "resources/config.edn")))
+(def config
+  (ig/read-string (slurp "resources/config.edn")))
 
 (defmethod ig/init-key :adapter/jetty [_ {:keys [handler] :as opts}]
   (jetty/run-jetty handler (-> opts (dissoc :handler) (assoc :join? false))))
@@ -15,7 +15,6 @@
 
 (defmethod ig/halt-key! :adapter/jetty [_ server]
   (.stop server))
-
 
 (defn -main []
   (ig/init config))
