@@ -1,6 +1,9 @@
 (ns johnwesonga.handler
   (:require [reitit.ring :as ring]
+            [muuntaja.core :as m]
+            [reitit.ring.middleware.muuntaja :as muuntaja]
             [johnwesonga.controller :as ctl]
+            [taoensso.timbre :as log]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]))
 
 (defn app
@@ -9,8 +12,9 @@
    (ring/router
     [["/healthz" {:get (fn [_] {:status 200 :body "healthy"})}]
      ["/" {:handler #'ctl/index}]]
-    {:data {:middleware [wrap-json-response
-                         wrap-json-body]}})
+    {:data {:muuntaja m/instance
+      :middleware [muuntaja/format-response-middleware
+                  ]}})
    (ring/routes
     (ring/create-resource-handler
      {:path "/"})

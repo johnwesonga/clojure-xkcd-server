@@ -12,6 +12,6 @@
                                 (client/get {:accept :json})
                                 :body
                                 parse-string)
-        resp-body (format "<img src='%s' alt='%s'>", img, title)]
-    (-> (resp/response resp-body)
+        resp-body (format "<img src=\"%s\" alt=\"%s\">", img, title)]
+    (-> (ok resp-body)
         (resp/header "Content-Type" "text/html; charset=utf-8"))))
