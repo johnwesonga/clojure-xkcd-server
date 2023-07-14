@@ -2,7 +2,7 @@
   (:require [ring.util.response :as resp]
             [ring.util.http-response :refer :all]
             [clj-http.client :as client]
-            [cheshire.core :refer :all]))
+            [cheshire.core :as cheshire]))
 
 (defn index
   [req]
@@ -11,7 +11,7 @@
         {:strs [img title]} (-> url
                                 (client/get {:accept :json})
                                 :body
-                                parse-string)
+                                cheshire/parse-string)
         resp-body (format "<img src=\"%s\" alt=\"%s\">", img, title)]
     (-> (ok resp-body)
         (resp/header "Content-Type" "text/html; charset=utf-8"))))

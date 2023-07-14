@@ -3,6 +3,7 @@
             [muuntaja.core :as m]
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [johnwesonga.controller :as ctl]
+            [ring.logger :as logger]
             [taoensso.timbre :as log]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]))
 
@@ -14,6 +15,7 @@
      ["/" {:handler #'ctl/index}]]
     {:data {:muuntaja m/instance
       :middleware [muuntaja/format-response-middleware
+                   logger/wrap-with-logger
                   ]}})
    (ring/routes
     (ring/create-resource-handler

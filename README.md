@@ -19,7 +19,7 @@ Run the project directly:
 
     $ clojure -m johnwesonga.xkcd-server
 
-Now acces the app at: http://localhost:8080/.
+Now access the app at: http://localhost:8080/.
 
 Run the Application in REPL
 

@@ -1,16 +1,17 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
         metosin/muuntaja {:mvn/version "0.6.7"}
-        cheshire {:mvn/version "5.10.0"}
-        clj-http {:mvn/version "2.3.0"}
+        cheshire/cheshire {:mvn/version "5.10.0"}
+        clj-http/clj-http {:mvn/version "2.3.0"}
         com.taoensso/timbre {:mvn/version "5.1.0"}
         metosin/reitit {:mvn/version "0.5.5"}
         ring/ring-json {:mvn/version "0.5.0"}
         ring/ring-core {:mvn/version "1.8.1"}
         ring/ring-jetty-adapter {:mvn/version "1.8.1"}
-        integrant {:mvn/version "0.8.0"}
+        integrant/integrant {:mvn/version "0.8.0"}
         metosin/ring-http-response {:mvn/version "0.9.1"}
-        integrant/repl {:mvn/version "0.3.1"}}
+        integrant/repl {:mvn/version "0.3.1"}
+        ring-logger/ring-logger {:mvn/version "1.1.1"}}
  :aliases
  {       :dev {:extra-paths ["dev"]}
          :server {:main-opts ["-m" "johnwesonga.xkcd-server"]}
